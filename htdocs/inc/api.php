@@ -41,8 +41,20 @@ class AppleSearchAPI{
 		curl_close($ch);
 
 		$results = json_decode( $results, true );
+		$results = $results['results'];
+		usort( $results, array( $this, 'sort_alpha' ) );
 
-		return $results['results'];
+		return $results;
+	}
+
+	/**
+	 * sort based on trackname alphabetically
+	 * @param  array $a first result
+	 * @param  array $b second result
+	 * @return int    direction to move in sort
+	 */
+	function sort_alpha( $a, $b ){
+		return strcmp( $a["trackName"], $b["trackName"] );
 	}
 
 }
