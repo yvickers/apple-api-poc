@@ -48,7 +48,7 @@ h1 {
   -webkit-box-pack: center;
   justify-content: center; }
   .grid .grid__item {
-    width: 31%;
+    width: 100%;
     margin: 0 1% 1em;
     text-align: center;
     padding: 3em 1em;
@@ -67,3 +67,6 @@ h1 {
       margin-bottom: 1em; }
     .grid .grid__item .grid__item__artist {
       font-size: 0.8rem; }
+    @media (min-width: 600px) {
+      .grid .grid__item {
+        width: 31%; } }
