@@ -26,28 +26,33 @@
 
 <body>
 
-	<div class="wrapper">
-		<form>
-			<input type="text" name="search" value="<?php echo $search_display; ?>" value="<?php echo $search_display; ?>">
-			<button type="submit"><span class="sr-only">Search</span></button>
-		</form>
+	<div role="main">
 
-		<?php if( $search_display != '' ): ?>
-			<h1>Search Results for "<?php echo $search_display; ?>"</h1>
-		<?php endif; ?>
-	</div>
+		<div class="wrapper">
+			<form>
+				<label for="SearchTerms" class="sr-only">Search Terms</label>
+				<input type="text" name="search" id="SearchTerms" value="<?php echo $search_display; ?>" value="<?php echo $search_display; ?>" placeholder="Search for some music..." aria-label="Search Terms">
+				<button type="submit" title="Search"><span class="sr-only">Search</span></button>
+			</form>
 
-	<div class="wrapper grid">
+			<?php if( $search_display != '' ): ?>
+				<h1>Search Results for "<?php echo $search_display; ?>"</h1>
+			<?php endif; ?>
+		</div>
 
-		<?php foreach( $results as $result ): ?>
+		<div class="wrapper grid">
 
-			<a class="grid__item" href="<?php echo $result['previewUrl'] ?>" target="_blank">
-				<img src="<?php echo $result['artworkUrl100'] ?>" alt="">
-				<span class="grid__item__title"><?php echo $result['trackName'] ?></span>
-				<span class="grid__item__artist"><?php echo $result['artistName'] ?></span>
-			</a>
+			<?php foreach( $results as $result ): ?>
 
-		<?php endforeach;?>
+				<a class="grid__item" href="<?php echo $result['previewUrl'] ?>" target="_blank" title="Play sample from <?php echo htmlspecialchars( $result['trackName'] ); ?>">
+					<img src="<?php echo $result['artworkUrl100'] ?>" alt="" aria-hidden="true">
+					<span class="grid__item__title"><?php echo $result['trackName'] ?></span>
+					<span class="grid__item__artist"><?php echo $result['artistName'] ?></span>
+				</a>
+
+			<?php endforeach;?>
+
+		</div>
 
 	</div>
 
