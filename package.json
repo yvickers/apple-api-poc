@@ -1,0 +1,25 @@
+{
+  "name": "applepoc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "htdocs/index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yvickers/apple-api-poc.git"
+  },
+  "author": "Yancey Vickers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yvickers/apple-api-poc/issues"
+  },
+  "homepage": "https://github.com/yvickers/apple-api-poc#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-sass": "^4.0.2",
+    "node-sass": "^4.13.0"
+  }
+}
