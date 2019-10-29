@@ -31,6 +31,14 @@ form{
 		top: 0;
 		z-index: 100;
 		cursor: pointer;
+
+		&:before{
+			font-family: 'Font Awesome 5 Free';
+			content: "\f002";
+			font-weight: 900;
+			font-size: 2em;
+			padding: 1em;
+		}
     }
 }
 

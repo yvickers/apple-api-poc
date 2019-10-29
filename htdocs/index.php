@@ -19,6 +19,7 @@
 	<title>Apple Search API</title>
 	<meta name="description" content="Demonstration of Apple search api">
 
+	<link rel="stylesheet" href="/assets/fontawesome/css/all.min.css">
 	<link rel="stylesheet" href="/assets/css/style.css">
 
 </head>
