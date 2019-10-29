@@ -1,3 +1,15 @@
+<?php
+	include( 'inc/api.php' );
+
+	$results = array();
+	$search_display = '';
+
+	if( isset( $_GET['search'] ) && $_GET['search'] != '' ){
+		$search_display = htmlspecialchars( $_GET['search'] );
+		$results = AppleSearchAPI()->get_results( $_GET['search']  );
+	}
+
+?>
 <!doctype html>
 
 <html lang="en">
@@ -13,58 +25,28 @@
 
 <body>
 
+	<div class="wrapper">
+		<form>
+			<input type="text" name="search" value="<?php echo $search_display; ?>" value="<?php echo $search_display; ?>">
+			<input type="submit" value="Search">
+		</form>
+
+		<?php if( $search_display != '' ): ?>
+			Search Results for "<?php echo $search_display; ?>"
+		<?php endif; ?>
+	</div>
+
 	<div class="wrapper grid">
 
-		<a class="grid__item" href="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/7f/d7/00/7fd700d9-09ad-1c1e-9d2a-7d20efb0676c/mzaf_9040985887126158361.plus.aac.p.m4a">
-			<img src="https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/a4/79/e7/a479e75e-42a2-45f5-2d88-c743c9f4535c/source/100x100bb.jpg" alt="">
-			<span class="grid__item__title">Girls Like You (feat. Cardi B)</span>
-			<span class="grid__item__artist">Maroon 5</span>
-		</a>
-		<a class="grid__item" href="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/7f/d7/00/7fd700d9-09ad-1c1e-9d2a-7d20efb0676c/mzaf_9040985887126158361.plus.aac.p.m4a">
-			<img src="https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/a4/79/e7/a479e75e-42a2-45f5-2d88-c743c9f4535c/source/100x100bb.jpg" alt="">
-			<span class="grid__item__title">Girls Like You (feat. Cardi B)</span>
-			<span class="grid__item__artist">Maroon 5</span>
-		</a>
-		<a class="grid__item" href="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/7f/d7/00/7fd700d9-09ad-1c1e-9d2a-7d20efb0676c/mzaf_9040985887126158361.plus.aac.p.m4a">
-			<img src="https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/a4/79/e7/a479e75e-42a2-45f5-2d88-c743c9f4535c/source/100x100bb.jpg" alt="">
-			<span class="grid__item__title">Girls Like You (feat. Cardi B)</span>
-			<span class="grid__item__artist">Maroon 5</span>
-		</a>
-		<a class="grid__item" href="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/7f/d7/00/7fd700d9-09ad-1c1e-9d2a-7d20efb0676c/mzaf_9040985887126158361.plus.aac.p.m4a">
-			<img src="https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/a4/79/e7/a479e75e-42a2-45f5-2d88-c743c9f4535c/source/100x100bb.jpg" alt="">
-			<span class="grid__item__title">Girls Like You (feat. Cardi B)</span>
-			<span class="grid__item__artist">Maroon 5</span>
-		</a>
-		<a class="grid__item" href="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/7f/d7/00/7fd700d9-09ad-1c1e-9d2a-7d20efb0676c/mzaf_9040985887126158361.plus.aac.p.m4a">
-			<img src="https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/a4/79/e7/a479e75e-42a2-45f5-2d88-c743c9f4535c/source/100x100bb.jpg" alt="">
-			<span class="grid__item__title">Girls Like You (feat. Cardi B)</span>
-			<span class="grid__item__artist">Maroon 5</span>
-		</a>
-		<a class="grid__item" href="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/7f/d7/00/7fd700d9-09ad-1c1e-9d2a-7d20efb0676c/mzaf_9040985887126158361.plus.aac.p.m4a">
-			<img src="https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/a4/79/e7/a479e75e-42a2-45f5-2d88-c743c9f4535c/source/100x100bb.jpg" alt="">
-			<span class="grid__item__title">Girls Like You (feat. Cardi B)</span>
-			<span class="grid__item__artist">Maroon 5</span>
-		</a>
-		<a class="grid__item" href="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/7f/d7/00/7fd700d9-09ad-1c1e-9d2a-7d20efb0676c/mzaf_9040985887126158361.plus.aac.p.m4a">
-			<img src="https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/a4/79/e7/a479e75e-42a2-45f5-2d88-c743c9f4535c/source/100x100bb.jpg" alt="">
-			<span class="grid__item__title">Girls Like You (feat. Cardi B)</span>
-			<span class="grid__item__artist">Maroon 5</span>
-		</a>
-		<a class="grid__item" href="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/7f/d7/00/7fd700d9-09ad-1c1e-9d2a-7d20efb0676c/mzaf_9040985887126158361.plus.aac.p.m4a">
-			<img src="https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/a4/79/e7/a479e75e-42a2-45f5-2d88-c743c9f4535c/source/100x100bb.jpg" alt="">
-			<span class="grid__item__title">Girls Like You (feat. Cardi B)</span>
-			<span class="grid__item__artist">Maroon 5</span>
-		</a>
-		<a class="grid__item" href="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/7f/d7/00/7fd700d9-09ad-1c1e-9d2a-7d20efb0676c/mzaf_9040985887126158361.plus.aac.p.m4a">
-			<img src="https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/a4/79/e7/a479e75e-42a2-45f5-2d88-c743c9f4535c/source/100x100bb.jpg" alt="">
-			<span class="grid__item__title">Girls Like You (feat. Cardi B)</span>
-			<span class="grid__item__artist">Maroon 5</span>
-		</a>
-		<a class="grid__item" href="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/7f/d7/00/7fd700d9-09ad-1c1e-9d2a-7d20efb0676c/mzaf_9040985887126158361.plus.aac.p.m4a">
-			<img src="https://is5-ssl.mzstatic.com/image/thumb/Music125/v4/a4/79/e7/a479e75e-42a2-45f5-2d88-c743c9f4535c/source/100x100bb.jpg" alt="">
-			<span class="grid__item__title">Girls Like You (feat. Cardi B)</span>
-			<span class="grid__item__artist">Maroon 5</span>
-		</a>
+		<?php foreach( $results as $result ): ?>
+
+			<a class="grid__item" href="<?php echo $result['previewUrl'] ?>" target="_blank">
+				<img src="<?php echo $result['artworkUrl100'] ?>" alt="">
+				<span class="grid__item__title"><?php echo $result['trackName'] ?></span>
+				<span class="grid__item__artist"><?php echo $result['artistName'] ?></span>
+			</a>
+
+		<?php endforeach;?>
 
 	</div>
 
