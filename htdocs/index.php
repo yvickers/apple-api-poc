@@ -28,11 +28,11 @@
 	<div class="wrapper">
 		<form>
 			<input type="text" name="search" value="<?php echo $search_display; ?>" value="<?php echo $search_display; ?>">
-			<input type="submit" value="Search">
+			<button type="submit"><span class="sr-only">Search</span></button>
 		</form>
 
 		<?php if( $search_display != '' ): ?>
-			Search Results for "<?php echo $search_display; ?>"
+			<h1>Search Results for "<?php echo $search_display; ?>"</h1>
 		<?php endif; ?>
 	</div>
 
