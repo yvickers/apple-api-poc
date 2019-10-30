@@ -6,7 +6,7 @@
 
 	if( isset( $_GET['search'] ) && $_GET['search'] != '' ){
 		$search_display = htmlspecialchars( $_GET['search'] );
-		$results = AppleSearchAPI()->get_results( $_GET['search']  );
+		$results = AppleSearchAPI()->get_results( $_GET['search'], array( 'limit' => 25 )  );
 	}
 
 ?>
@@ -42,12 +42,14 @@
 
 		<div class="wrapper grid">
 
-			<?php foreach( $results as $result ): ?>
+			<?php foreach( $results as $result ): $result += array( 'trackName' => '', 'releaseDate' => '', 'collectionPrice' => '' ); ?>
 
 				<a class="grid__item" href="<?php echo $result['previewUrl'] ?>" target="_blank" title="Play sample from <?php echo htmlspecialchars( $result['trackName'] ); ?>">
 					<img src="<?php echo $result['artworkUrl100'] ?>" alt="" aria-hidden="true">
 					<span class="grid__item__title"><?php echo $result['trackName'] ?></span>
 					<span class="grid__item__artist"><?php echo $result['artistName'] ?></span>
+					<!-- Release Date: <?php echo $result['releaseDate']; ?> -->
+					<!-- Collection Price: <?php echo $result['collectionPrice']; ?> -->
 				</a>
 
 			<?php endforeach;?>
