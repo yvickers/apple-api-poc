@@ -3,11 +3,22 @@
 
 	$results = array();
 	$search_display = '';
+	$sort = 'alphabetically';
+	if( isset($_GET['sort']) && '' != $_GET['sort'] ){
+		$sort = $_GET['sort'];
+		AppleSearchAPI()->set_sort( $sort );
+	}
 
 	if( isset( $_GET['search'] ) && $_GET['search'] != '' ){
 		$search_display = htmlspecialchars( $_GET['search'] );
 		$results = AppleSearchAPI()->get_results( $_GET['search'], array( 'limit' => 25 )  );
 	}
+
+	$sort_options = array(
+		 'alphabetically' => 'A to Z',
+		 'collection_price' => 'Collection Price',
+		 'release_date' => 'Release Date',
+	);
 
 ?>
 <!doctype html>
@@ -30,9 +41,19 @@
 
 		<div class="wrapper">
 			<form>
-				<label for="SearchTerms" class="sr-only">Search Terms</label>
-				<input type="text" name="search" id="SearchTerms" value="<?php echo $search_display; ?>" value="<?php echo $search_display; ?>" placeholder="Search for some music..." aria-label="Search Terms">
-				<button type="submit" title="Search"><span class="sr-only">Search</span></button>
+				<div class="search-wrap">
+					<label for="SearchTerms" class="sr-only">Search Terms</label>
+					<input type="text" name="search" id="SearchTerms" value="<?php echo $search_display; ?>" value="<?php echo $search_display; ?>" placeholder="Search for some music..." aria-label="Search Terms">
+					<button type="submit" title="Search"><span class="sr-only">Search</span></button>
+				</div>
+				<fieldset>
+					<legend>Sort Order</legend>
+					<div>
+						<?php foreach( $sort_options as $value => $label ): ($sel = ( $value == $sort )? ' CHECKED':''); ?>
+							<label><input type="radio" name="sort" value="<?php echo $value; ?>"<?php echo $sel;?>><?php echo $label; ?></label>
+						<?php endforeach; ?>
+					</div>
+				</fieldset>
 			</form>
 
 			<?php if( $search_display != '' ): ?>
